@@ -33,4 +33,5 @@ dependencies {
     compile "org.jetbrains.anko:anko-sqlite:$anko_version"
     compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     compile "com.jaeger.statusbaruitl:library:$statusbaruitl_version"
+    compile "pub.devrel:easypermissions:$rootProject.permissionVersion"
 }
