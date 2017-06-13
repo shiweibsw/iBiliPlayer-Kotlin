@@ -17,7 +17,7 @@ class SplashActivity : BaseActivity() {
         splashCenterIv.animate().alpha(1.0f).setDuration(1000).start()
         splashCenterIv.postDelayed(Runnable {
             if (isLogin) {
-                startActivity<LoginActivity>()
+                startActivity<MainActivity>()
             } else {
                 startActivity<LoginActivity>()
             }
