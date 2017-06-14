@@ -5,6 +5,10 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
     defaultConfig {
         applicationId "com.knightdavion.kotlin.ibiliplayer"
         minSdkVersion 18
@@ -34,4 +38,6 @@ dependencies {
     compile "com.android.support.constraint:constraint-layout:$constraint_layout_version"
     compile "com.jaeger.statusbaruitl:library:$statusbaruitl_version"
     compile "pub.devrel:easypermissions:$rootProject.permissionVersion"
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.0@aar'
 }

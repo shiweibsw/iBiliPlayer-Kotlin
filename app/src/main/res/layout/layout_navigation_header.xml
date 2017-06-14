@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="196dip"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/userAvatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ico_user_default"/>
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:maxLines="1"
+        android:text="用户名"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userAvatar"/>
+
+    <TextView
+        android:id="@+id/userLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="LV0"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toEndOf="@+id/userName"
+        app:layout_constraintTop_toBottomOf="@+id/userAvatar"/>
+
+    <TextView
+        android:id="@+id/userAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="5dp"
+        android:text="硬币:0.00    B币:0.0"
+        android:textColor="@color/font_grey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName"/>
+
+    <ImageView
+        android:id="@+id/dayNight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_switch_night"/>
+
+    <ImageView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/dayNight"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_navigation_header_notification"/>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:background="@android:color/holo_orange_light"
+        android:drawableRight="@drawable/ic_action_arrow_fllow"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="进入只有会员才知道的世界"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_home"
+            android:checked="true"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="主页"/>
+
+        <item
+            android:id="@+id/item_vip"
+            android:checkable="false"
+            android:icon="@drawable/ic_nav_vip"
+            android:title="我的大会员"/>
+
+        <item
+            android:id="@+id/item_download"
+            android:checkable="false"
+            android:icon="@drawable/ic_file_download_black_24dp"
+            android:title="离线缓存"/>
+
+
+    </group>
+
+
+    <group
+        android:id="@+id/group_user"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/item_favourite"
+            android:icon="@drawable/ic_star_black_24dp"
+            android:title="我的收藏"/>
+
+        <item
+            android:id="@+id/item_history"
+            android:icon="@drawable/ic_history_black_24dp"
+            android:title="历史记录"/>
+
+
+        <item
+            android:id="@+id/item_group"
+            android:icon="@drawable/ic_people_black_24dp"
+            android:title="关注的人"/>
+        <item
+            android:id="@+id/item_tracker"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="我的钱包"/>
+
+    </group>
+
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/item_theme"
+            android:checkable="false"
+            android:icon="@drawable/ic_color_lens_black_24dp"
+            android:title="主题选择"/>
+
+        <item
+            android:id="@+id/item_app"
+            android:checkable="false"
+            android:icon="@drawable/ic_shop_black_24dp"
+            android:title="应用推荐"/>
+
+
+        <item
+            android:id="@+id/item_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="设置与帮助"/>
+
+    </group>
+
+</menu>

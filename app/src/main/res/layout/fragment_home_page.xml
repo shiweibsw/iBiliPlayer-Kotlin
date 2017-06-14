@@ -1,0 +1,60 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.knightdavion.kotlin.ibiliplayer.ui.fragment.HomePageFragment">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                android:contentInsetStart="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_drawer_home"/>
+                </LinearLayout>
+            </android.support.v7.widget.Toolbar>
+
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/colorPrimary"
+                android:paddingLeft="8dip"
+                android:paddingRight="8dip"
+                app:tl_indicator_corner_radius="1dp"
+                app:tl_indicator_height="2dp"
+                app:tl_indicator_width="40dp"
+                app:tl_tab_space_equal="true"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <com.knightdavion.kotlin.ibiliplayer.view.NoScrollViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    </android.support.design.widget.CoordinatorLayout>
+</FrameLayout>
