@@ -9,14 +9,14 @@ import com.github.ybq.android.spinkit.style.Wave
  */
 interface ProgressBarManager {
 
-    val progressBar: SpinKitView
+    val loadingBar: SpinKitView
 
-    fun showProgressBar() {
-        progressBar.setIndeterminateDrawable(Wave())
-        progressBar.visibility = View.VISIBLE
+    fun showLoadingBar() {
+        loadingBar.setIndeterminateDrawable(Wave())
+        loadingBar.visibility = View.VISIBLE
     }
 
-    fun hideProgressBar() {
-        progressBar.visibility = View.GONE
+    fun hideLoadingBar() {
+        loadingBar.visibility = View.GONE
     }
 }

@@ -2,7 +2,6 @@ package com.knightdavion.kotlin.ibiliplayer.ui.activitys
 
 import android.os.Bundle
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import com.github.ybq.android.spinkit.SpinKitView
 import com.knightdavion.kotlin.ibiliplayer.R
 import com.knightdavion.kotlin.ibiliplayer.data.remote.HttpManager
@@ -21,7 +20,7 @@ import org.jetbrains.anko.find
 class GameCentreActivity : BaseActivity(), ToolBarManager, ProgressBarManager {
 
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
-    override val progressBar by lazy { find<SpinKitView>(R.id.psBar) }
+    override val loadingBar by lazy { find<SpinKitView>(R.id.psBar) }
 
     var mHttpObserver: HttpSubscriber<TestBean>? = null
 
@@ -38,14 +37,13 @@ class GameCentreActivity : BaseActivity(), ToolBarManager, ProgressBarManager {
     }
 
     fun initView() {
-        showProgressBar()
+        showLoadingBar()
         mHttpObserver = HttpSubscriber<TestBean>(object : OnResultCallBack<TestBean> {
             override fun onSuccess(tb: TestBean) {
-                Log.e("TAG", tb.toString())
+                hideLoadingBar()
             }
-
             override fun onError(code: Int, errorMsg: String) {
-                Log.e("TAG", "code:$code errorMsg:$errorMsg")
+                hideLoadingBar()
             }
         })
         HttpManager.getDatasWithCache(mHttpObserver as HttpSubscriber<TestBean>, 1, 10, "json1", true)
