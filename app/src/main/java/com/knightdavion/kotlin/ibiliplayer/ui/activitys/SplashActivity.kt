@@ -1,9 +1,10 @@
-package com.knightdavion.kotlin.ibiliplayer.ui
+package com.knightdavion.kotlin.ibiliplayer.ui.activitys
 
 import android.Manifest
 import android.os.Bundle
 import com.jaeger.library.StatusBarUtil
 import com.knightdavion.kotlin.ibiliplayer.R
+import com.knightdavion.kotlin.ibiliplayer.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity
 import pub.devrel.easypermissions.AppSettingsDialog

@@ -1,10 +1,12 @@
-package com.knightdavion.kotlin.ibiliplayer.ui
+package com.knightdavion.kotlin.ibiliplayer.ui.activitys
 
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.v4.view.GravityCompat
 import android.view.Gravity
 import android.view.MenuItem
 import com.knightdavion.kotlin.ibiliplayer.R
+import com.knightdavion.kotlin.ibiliplayer.ui.BaseActivity
 import com.knightdavion.kotlin.ibiliplayer.ui.fragment.HomePageFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,7 +21,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private fun initFragments() {
         homePageFragment = HomePageFragment.newInstance()
-        supportFragmentManager.beginTransaction().add(R.id.container, homePageFragment).show(homePageFragment).commit()
+        loadRootFragment(R.id.container, homePageFragment)
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
@@ -32,4 +34,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         return false
     }
 
+    fun toggleDrawer() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
+    }
 }

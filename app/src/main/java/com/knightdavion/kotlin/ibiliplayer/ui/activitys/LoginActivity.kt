@@ -1,8 +1,9 @@
-package com.knightdavion.kotlin.ibiliplayer.ui
+package com.knightdavion.kotlin.ibiliplayer.ui.activitys
 
 import android.os.Bundle
 import android.text.TextUtils
 import com.knightdavion.kotlin.ibiliplayer.R
+import com.knightdavion.kotlin.ibiliplayer.ui.BaseActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
