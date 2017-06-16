@@ -7,12 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.knightdavion.kotlin.ibiliplayer.R
+import com.knightdavion.kotlin.ibiliplayer.data.remote.HttpManager
+import com.knightdavion.kotlin.ibiliplayer.data.remote.OnResultCallBack
+import com.knightdavion.kotlin.ibiliplayer.data.remote.subscriber.HttpSubscriber
+import com.knightdavion.kotlin.ibiliplayer.model.LiveTypeModel
 import kotlinx.android.synthetic.main.fragment_live.view.*
 import me.yokeyword.fragmentation.SupportFragment
 
 
 class HomeLiveFragment : SupportFragment() {
     var mViewPager: ViewPager? = null
+
     companion object {
         fun newInstance(): HomeLiveFragment {
             return HomeLiveFragment()
@@ -26,7 +31,19 @@ class HomeLiveFragment : SupportFragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView: View = inflater!!.inflate(R.layout.fragment_live, container, false)
-        mViewPager=rootView.viewPager
+        mViewPager = rootView.viewPager
+
+        HttpManager.getLiveTypes(HttpSubscriber<List<LiveTypeModel>>(object : OnResultCallBack<List<LiveTypeModel>> {
+            override fun onSuccess(list: List<LiveTypeModel>) {
+                list.forEach {
+                    Log.e("TAG", it.toString())
+                }
+            }
+            override fun onError(code: Int, errorMsg: String) {
+                Log.e("TAG", errorMsg)
+            }
+        }))
+
 
         return rootView
     }

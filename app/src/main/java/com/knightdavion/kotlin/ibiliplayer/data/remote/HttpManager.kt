@@ -11,6 +11,7 @@ import com.knightdavion.kotlin.ibiliplayer.data.remote.api.ApiService
 import com.knightdavion.kotlin.ibiliplayer.data.remote.cache.CacheProvider
 import com.knightdavion.kotlin.ibiliplayer.data.remote.parser.GsonTSpeaker
 import com.knightdavion.kotlin.ibiliplayer.model.GameCenterModle
+import com.knightdavion.kotlin.ibiliplayer.model.LiveTypeModel
 import com.knightdavion.kotlin.ibiliplayer.model.TestBean
 import com.knightdavion.kotlin.ibiliplayer.model.VipGameInfo
 import io.reactivex.Observable
@@ -88,6 +89,14 @@ object HttpManager {
     fun getVipGameInfo(subscriber: Observer<VipGameInfo>) {
         toSubscribe(mApiService!!.getVipGameInfo(), subscriber)
     }
+
+    /**
+     * 获取直播分类
+     */
+    fun getLiveTypes(subscriber: Observer<List<LiveTypeModel>>) {
+        toSubscribe(mApiService!!.getLiveTyps(), subscriber)
+    }
+
 
     /**
      * 获取游戏中心数据（本地）
