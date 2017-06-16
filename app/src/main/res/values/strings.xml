@@ -124,9 +124,9 @@
     <string name="home_tab_more">更多</string>
     <string name="section_recommend">推荐</string>
     <string name="section_live">直播</string>
-    <string name="section_focus">关注</string>
+    <string name="section_focus">动态</string>
     <string name="section_more">分区</string>
-    <string name="section_bangumi">番剧</string>
+    <string name="section_bangumi">追番</string>
     <string name="section_discover">发现</string>
     <string name="level_text">LV2</string>
     <string name="vip_message_1">您还不是</string>
