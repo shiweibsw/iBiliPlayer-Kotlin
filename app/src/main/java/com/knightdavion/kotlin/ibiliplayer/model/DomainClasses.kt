@@ -12,3 +12,7 @@ data class TestBean(var totalPage: Int, var ps: Int, var pno: Int, var list: Lis
 }
 
 data class ListBean(var id: String, var title: String, var source: String, var firstImg: String, var mark: String, var url: String)
+
+
+
+

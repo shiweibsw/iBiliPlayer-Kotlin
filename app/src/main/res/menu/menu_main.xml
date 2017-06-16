@@ -23,5 +23,4 @@
 		android:orderInCategory="100"
 		android:title="搜索"
 		app:showAsAction="always"/>
-
 </menu>

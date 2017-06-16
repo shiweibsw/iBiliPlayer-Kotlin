@@ -5,4 +5,5 @@
     <color name="colorAccent">#fb7299</color>
     <color name="window_background">#eaeaea</color>
     <color name="font_grey">#e0e0e0</color>
+    <color name="driver_line">#cdcdcd</color>
 </resources>

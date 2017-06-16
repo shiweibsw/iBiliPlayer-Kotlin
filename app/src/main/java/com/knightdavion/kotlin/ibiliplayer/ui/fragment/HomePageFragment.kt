@@ -62,7 +62,6 @@ class HomePageFragment : SupportFragment() {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
         inflater.inflate(R.menu.menu_main, menu)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

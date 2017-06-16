@@ -1,39 +1,39 @@
 package com.knightdavion.kotlin.ibiliplayer.data.remote.api
 
 class ApiResponse<T> {
-    private var error_code: String? = null
-    private var reason: String? = null
-    private var result: T? = null
+    private var code: String? = null
+    private var message: String? = null
+    private var data: T? = null
 
     fun getCode(): String {
-        return error_code!!
+        return code!!
     }
 
     fun setCode(code: String) {
-        this.error_code = code
+        this.code = code
     }
 
     fun getMsg(): String {
-        return reason!!
+        return message!!
     }
 
     fun setMsg(msg: String) {
-        this.reason = msg
+        this.message = msg
     }
 
     fun getDatas(): T {
-        return result!!
+        return data!!
     }
 
     fun setDatas(datas: T) {
-        this.result = datas
+        this.data = datas
     }
 
     override fun toString(): String {
         val sb = StringBuffer()
-        sb.append("error_code=$error_code reason=$reason")
-        if (null != result) {
-            sb.append(" result:" + result.toString())
+        sb.append("error_code=$code reason=$message")
+        if (null != data) {
+            sb.append(" result:" + data.toString())
         }
         return sb.toString()
     }

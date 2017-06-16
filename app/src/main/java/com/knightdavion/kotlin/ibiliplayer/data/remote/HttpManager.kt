@@ -1,14 +1,20 @@
 package com.knightdavion.kotlin.ibiliplayer.data.remote
 
+import android.content.Context
+import android.text.TextUtils
 import android.util.Log
+import com.google.gson.Gson
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.knightdavion.kotlin.ibiliplayer.App
 import com.knightdavion.kotlin.ibiliplayer.data.remote.api.ApiResponse
 import com.knightdavion.kotlin.ibiliplayer.data.remote.api.ApiService
 import com.knightdavion.kotlin.ibiliplayer.data.remote.cache.CacheProvider
 import com.knightdavion.kotlin.ibiliplayer.data.remote.parser.GsonTSpeaker
+import com.knightdavion.kotlin.ibiliplayer.model.GameCenterModle
 import com.knightdavion.kotlin.ibiliplayer.model.TestBean
+import com.knightdavion.kotlin.ibiliplayer.model.VipGameInfo
 import io.reactivex.Observable
+import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
@@ -19,7 +25,11 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.BufferedReader
+import java.io.IOException
+import java.io.InputStreamReader
 import java.util.concurrent.TimeUnit
+
 
 /**
  * Created by shiwei on 2017/6/15.
@@ -29,6 +39,7 @@ object HttpManager {
     var mRetrofit: Retrofit? = null
     var mApiService: ApiService? = null
     var cacheProvider: CacheProvider? = null
+    var okHttpClient: OkHttpClient? = null
     val DEFAULT_TIMEOUT: Long = 5L
 
     init {
@@ -39,7 +50,7 @@ object HttpManager {
         builder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 .addInterceptor(loggingInterceptor)
-        val okHttpClient = builder.build()
+        okHttpClient = builder.build()
 
         mRetrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -69,5 +80,46 @@ object HttpManager {
 
     fun getDatasWithCache(subscriber: Observer<TestBean>, pno: Int, ps: Int, dtype: String, update: Boolean) {
         toSubscribe(cacheProvider!!.getDatas(mApiService!!.getDatas(pno, ps, dtype), EvictProvider(update)), subscriber)
+    }
+
+    /**
+     * 获取游戏中心头部Banner数据
+     */
+    fun getVipGameInfo(subscriber: Observer<VipGameInfo>) {
+        toSubscribe(mApiService!!.getVipGameInfo(), subscriber)
+    }
+
+    /**
+     * 获取游戏中心数据（本地）
+     */
+    fun getGameList(subscriber: Observer<GameCenterModle>, context: Context, url: String) {
+        Observable.create(ObservableOnSubscribe<GameCenterModle> {
+            val result = Gson().fromJson(readAssetsJson(context, url), GameCenterModle::class.java)
+            it.onNext(result)
+        }).unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    fun readAssetsJson(context: Context, url: String): String? {
+        val assetManager = context.assets
+        try {
+            val inputStream = assetManager.open(url)
+            val br = BufferedReader(InputStreamReader(inputStream))
+            val stringBuilder = StringBuilder()
+            stringBuilder.append("{")
+            var str: String
+            while (br.read() != -1) {
+                str = br.readLine() ?: ""
+                if (!TextUtils.isEmpty(str)) {
+                    stringBuilder.append(str.trim())
+                }
+            }
+            stringBuilder.append("}")
+            return stringBuilder.toString()
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return null
+        }
     }
 }
