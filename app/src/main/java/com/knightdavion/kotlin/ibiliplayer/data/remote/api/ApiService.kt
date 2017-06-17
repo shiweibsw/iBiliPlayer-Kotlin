@@ -1,8 +1,6 @@
 package com.knightdavion.kotlin.ibiliplayer.data.remote.api
 
-import com.knightdavion.kotlin.ibiliplayer.model.LiveTypeModel
-import com.knightdavion.kotlin.ibiliplayer.model.TestBean
-import com.knightdavion.kotlin.ibiliplayer.model.VipGameInfo
+import com.knightdavion.kotlin.ibiliplayer.model.*
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -31,4 +29,10 @@ interface ApiService {
 
     @GET(LIVE_BASE_URL + "AppIndex/areas?_device=android&_hwid=12f957357901e986&access_key=58b319d3823d18b9122b53588628bbc3&appkey=1d8b6e7d45233436&build=507000&mobi_app=android&platform=android&scale=xxhdpi&src=huawei&trace_id=20170616163000054&ts=1497601854&version=5.7.0.507000&sign=eced774d0c8b76a723f6f59b210e6b93")
     fun getLiveTyps(): Observable<ApiResponse<List<LiveTypeModel>>>
+
+    @GET(LIVE_BASE_URL + "AppNewIndex/common?_device=android&_hwid=12f957357901e986&appkey=1d8b6e7d45233436&build=507000&mobi_app=android&platform=android&scale=xxhdpi&src=huawei&trace_id=20170617093900057&ts=1497663597&version=5.7.0.507000&sign=21c9329af4ec203dde85560275d05590")
+    fun getLiveHomeDatas(): Observable<ApiResponse<LiveHomeModel>>
+
+    @GET(LIVE_BASE_URL + "AppNewIndex/recommend?_device=android&_hwid=12f957357901e986&appkey=1d8b6e7d45233436&build=507000&mobi_app=android&platform=android&scale=xxhdpi&src=huawei&trace_id=20170617142600035&ts=1497680795&version=5.7.0.507000&sign=e0e93fcc42a2dbd83c44f13f6b552224")
+    fun getLiveHomeHotDatas(): Observable<ApiResponse<LiveHomeHotModle>>
 }

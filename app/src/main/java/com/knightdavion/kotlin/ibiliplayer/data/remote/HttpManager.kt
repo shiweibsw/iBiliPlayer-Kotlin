@@ -10,10 +10,7 @@ import com.knightdavion.kotlin.ibiliplayer.data.remote.api.ApiResponse
 import com.knightdavion.kotlin.ibiliplayer.data.remote.api.ApiService
 import com.knightdavion.kotlin.ibiliplayer.data.remote.cache.CacheProvider
 import com.knightdavion.kotlin.ibiliplayer.data.remote.parser.GsonTSpeaker
-import com.knightdavion.kotlin.ibiliplayer.model.GameCenterModle
-import com.knightdavion.kotlin.ibiliplayer.model.LiveTypeModel
-import com.knightdavion.kotlin.ibiliplayer.model.TestBean
-import com.knightdavion.kotlin.ibiliplayer.model.VipGameInfo
+import com.knightdavion.kotlin.ibiliplayer.model.*
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
@@ -95,6 +92,20 @@ object HttpManager {
      */
     fun getLiveTypes(subscriber: Observer<List<LiveTypeModel>>) {
         toSubscribe(mApiService!!.getLiveTyps(), subscriber)
+    }
+
+    /**
+     * 获取直播各个区域数据
+     */
+    fun getLiveHomeDatas(subscriber: Observer<LiveHomeModel>) {
+        toSubscribe(mApiService!!.getLiveHomeDatas(), subscriber)
+    }
+    
+    /**
+     * 获取推荐主播数据
+     */
+    fun getLiveHomeHotDatas(subscriber: Observer<LiveHomeHotModle>) {
+        toSubscribe(mApiService!!.getLiveHomeHotDatas(), subscriber)
     }
 
 
