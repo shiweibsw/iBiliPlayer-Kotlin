@@ -7,15 +7,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.hengda.smart.kotlin.jinsha.main.LiveHomeBannerAdapter
 import com.knightdavion.kotlin.ibiliplayer.R
 import com.knightdavion.kotlin.ibiliplayer.adapter.LiveHomeBaseAdapter
 import com.knightdavion.kotlin.ibiliplayer.data.remote.HttpManager
 import com.knightdavion.kotlin.ibiliplayer.data.remote.OnResultCallBack
 import com.knightdavion.kotlin.ibiliplayer.data.remote.subscriber.HttpSubscriber
+import com.knightdavion.kotlin.ibiliplayer.model.Banner
 import com.knightdavion.kotlin.ibiliplayer.model.LiveHomeHotModle
 import com.knightdavion.kotlin.ibiliplayer.model.LiveHomeModel
 import com.knightdavion.kotlin.ibiliplayer.model.Partitions
 import kotlinx.android.synthetic.main.fragment_live.view.*
+import me.relex.circleindicator.CircleIndicator
 import me.yokeyword.fragmentation.SupportFragment
 import org.jetbrains.anko.find
 
@@ -51,14 +54,6 @@ class HomeLiveFragment : SupportFragment() {
         loadLiveHomeHotDatas()
     }
 
-    fun initHeaderAndFooterView() {
-        val headeView: View = LayoutInflater.from(activity).inflate(R.layout.layout_live_home_header, null)
-        val footerView: View = LayoutInflater.from(activity).inflate(R.layout.layout_live_home_footer, null)
-        mViewPager = headeView.find(R.id.viewPager)
-        mBaseAdapter?.addHeaderView(headeView)
-        mBaseAdapter?.addFooterView(footerView)
-    }
-
     fun loadLiveHomeHotDatas() {
         HttpManager.getLiveHomeHotDatas(HttpSubscriber<LiveHomeHotModle>(object : OnResultCallBack<LiveHomeHotModle> {
             override fun onSuccess(model: LiveHomeHotModle) {
@@ -66,19 +61,32 @@ class HomeLiveFragment : SupportFragment() {
                 datas.add(p)
                 loadLiveHomeDatas()
             }
+
             override fun onError(code: Int, errorMsg: String) {
             }
         }))
     }
+
     fun loadLiveHomeDatas() {
         HttpManager.getLiveHomeDatas(HttpSubscriber<LiveHomeModel>(object : OnResultCallBack<LiveHomeModel> {
             override fun onSuccess(model: LiveHomeModel) {
                 datas.addAll(model.partitions)
                 mBaseAdapter?.notifyDataSetChanged()
-                initHeaderAndFooterView()
+                initHeaderAndFooterView(model.banner)
             }
             override fun onError(code: Int, errorMsg: String) {
             }
         }))
+    }
+
+    fun initHeaderAndFooterView(banners: List<Banner>) {
+        val headeView: View = LayoutInflater.from(activity).inflate(R.layout.layout_live_home_header, null)
+        mViewPager = headeView.find(R.id.viewPager)
+        val indicator = headeView.find<CircleIndicator>(R.id.indicator)
+        mViewPager?.adapter = LiveHomeBannerAdapter(banners)
+        indicator.setViewPager(mViewPager);
+        mBaseAdapter?.addHeaderView(headeView)
+        val footerView: View = LayoutInflater.from(activity).inflate(R.layout.layout_live_home_footer, null)
+        mBaseAdapter?.addFooterView(footerView)
     }
 }

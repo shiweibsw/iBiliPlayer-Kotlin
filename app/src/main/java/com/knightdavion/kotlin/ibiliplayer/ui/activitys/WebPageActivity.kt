@@ -10,7 +10,7 @@ import android.webkit.*
 import com.github.ybq.android.spinkit.SpinKitView
 import com.knightdavion.kotlin.ibiliplayer.R
 import com.knightdavion.kotlin.ibiliplayer.ui.BaseActivity
-import com.knightdavion.kotlin.ibiliplayer.ui.ProgressBarManager
+import com.knightdavion.kotlin.ibiliplayer.ui.LoadingBarManager
 import com.knightdavion.kotlin.ibiliplayer.ui.ToolBarManager
 import com.knightdavion.kotlin.ibiliplayer.util.ClipboardUtil
 import kotlinx.android.synthetic.main.activity_webpage.*
@@ -21,7 +21,7 @@ import org.jetbrains.anko.toast
 /**
  * Created by shiwei on 2017/6/14.
  */
-class WebPageActivity : BaseActivity(), ToolBarManager, ProgressBarManager {
+class WebPageActivity : BaseActivity(), ToolBarManager, LoadingBarManager {
     companion object {
         val URL = "WebPageActivity:url"
         val TITLE = "WebPageActivity:title"

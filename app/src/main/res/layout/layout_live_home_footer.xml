@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     tools:context="com.knightdavion.kotlin.ibiliplayer.ui.fragment.HomePageFragment">
 
-    <Button
+    <TextView
         android:id="@+id/more"
         android:layout_width="0dp"
         android:layout_height="30dp"
@@ -16,6 +16,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/btn_more_white"
         android:text="更多直播"
+        android:gravity="center"
         android:textSize="12sp"
         android:textColor="@color/font_grey_dark"
         app:layout_constraintBottom_toBottomOf="parent"

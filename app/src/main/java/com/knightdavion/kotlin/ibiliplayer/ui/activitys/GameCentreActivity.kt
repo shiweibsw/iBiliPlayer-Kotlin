@@ -20,7 +20,7 @@ import com.knightdavion.kotlin.ibiliplayer.model.BookGiftBean
 import com.knightdavion.kotlin.ibiliplayer.model.GameCenterModle
 import com.knightdavion.kotlin.ibiliplayer.model.VipGameInfo
 import com.knightdavion.kotlin.ibiliplayer.ui.BaseActivity
-import com.knightdavion.kotlin.ibiliplayer.ui.ProgressBarManager
+import com.knightdavion.kotlin.ibiliplayer.ui.LoadingBarManager
 import com.knightdavion.kotlin.ibiliplayer.ui.ToolBarManager
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
 import kotlinx.android.synthetic.main.activity_game_center.*
@@ -31,7 +31,7 @@ import org.jetbrains.anko.startActivity
 /**
  * Created by shiwei on 2017/6/14.
  */
-class GameCentreActivity : BaseActivity(), ToolBarManager, ProgressBarManager {
+class GameCentreActivity : BaseActivity(),ToolBarManager,LoadingBarManager {
 
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
     override val loadingBar by lazy { find<SpinKitView>(R.id.psBar) }

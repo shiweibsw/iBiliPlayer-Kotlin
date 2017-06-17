@@ -7,7 +7,7 @@ import com.github.ybq.android.spinkit.style.Wave
 /**
  * Created by shiwei on 2017/6/15.
  */
-interface ProgressBarManager {
+interface LoadingBarManager {
 
     val loadingBar: SpinKitView
 

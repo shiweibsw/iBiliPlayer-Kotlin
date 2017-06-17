@@ -3,9 +3,9 @@ package com.knightdavion.kotlin.ibiliplayer.model
 /**
  * Created by shiwei on 2017/6/17.
  */
-data class LiveHomeModel(var partitions: List<Partitions>)
+data class LiveHomeModel(val banner: List<Banner>, val partitions: List<Partitions>)
 
-data class Partitions(var partition: Partition, var lives: MutableList<Lives>)
+data class Partitions(val partition: Partition, val lives: MutableList<Lives>)
 
 data class Partition(val id: Int, val name: String, val area: String, val sub_icon: SubIcon, val count: Int)
 
@@ -16,6 +16,8 @@ data class Lives(val owner: Owner, val cover: Cover, val title: String, val room
 data class Owner(val face: String, val mid: Int, val name: String)
 
 data class Cover(val src: String, val height: Int, val width: Int)
+
+data class Banner(val img: String, val link: String, val remark: String, val title: String)
 
 //推荐主播数据
 data class LiveHomeHotModle(var recommend_data: RecommendData)
