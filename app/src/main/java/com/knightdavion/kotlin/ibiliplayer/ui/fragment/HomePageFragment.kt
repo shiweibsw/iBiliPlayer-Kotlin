@@ -8,6 +8,10 @@ import com.flyco.tablayout.SlidingTabLayout
 import com.knightdavion.kotlin.ibiliplayer.App
 import com.knightdavion.kotlin.ibiliplayer.R
 import com.knightdavion.kotlin.ibiliplayer.adapter.HomePagerAdapter
+import com.knightdavion.kotlin.ibiliplayer.data.remote.HttpManager
+import com.knightdavion.kotlin.ibiliplayer.data.remote.OnResultCallBack
+import com.knightdavion.kotlin.ibiliplayer.data.remote.subscriber.HttpSubscriber
+import com.knightdavion.kotlin.ibiliplayer.model.SearchResultModle
 import com.knightdavion.kotlin.ibiliplayer.ui.activitys.GameCentreActivity
 import com.knightdavion.kotlin.ibiliplayer.ui.activitys.MainActivity
 import com.knightdavion.kotlin.ibiliplayer.view.NoScrollViewPager
@@ -65,6 +69,17 @@ class HomePageFragment : SupportFragment() {
                 activity.toast(keyword)
             }
             override fun OnTextChanged(keyword: String) {
+                HttpManager.getSearchSuggests(HttpSubscriber<SearchResultModle>(object : OnResultCallBack<SearchResultModle> {
+                    override fun onSuccess(model: SearchResultModle) {
+                        val suggests = mutableListOf<String>()
+                        if (model.upuser != null) suggests.add(model.upuser[0].name)
+                        if (model.bangumi != null) suggests.add(model.bangumi[0].name)
+                        suggests.addAll(model.suggest)
+                        searchFragment.setSuggests(suggests)
+                    }
+                    override fun onError(code: Int, errorMsg: String) {
+                    }
+                }), keyword)
 
             }
         })

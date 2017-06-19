@@ -91,6 +91,13 @@ object HttpManager {
     }
 
     /**
+     * 获取实时搜索建议
+     */
+    fun getSearchSuggests(subscriber: Observer<SearchResultModle>, keyword: String) {
+        toSubscribe(mApiService!!.getSearchSuggests(keyword), subscriber)
+    }
+
+    /**
      * 获取游戏中心数据（本地）
      */
     fun getGameList(subscriber: Observer<GameCenterModle>, context: Context, url: String) {
