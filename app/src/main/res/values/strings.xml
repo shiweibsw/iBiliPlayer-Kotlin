@@ -8,6 +8,7 @@
         <item>@string/section_focus</item>
         <item>@string/section_discover</item>
     </string-array>
+
     <string name="login">登录</string>
     <string name="info_play_times_format">%d</string>
     <string name="info_reviews_format">%d</string>

@@ -11,9 +11,12 @@ import com.knightdavion.kotlin.ibiliplayer.adapter.HomePagerAdapter
 import com.knightdavion.kotlin.ibiliplayer.ui.activitys.GameCentreActivity
 import com.knightdavion.kotlin.ibiliplayer.ui.activitys.MainActivity
 import com.knightdavion.kotlin.ibiliplayer.view.NoScrollViewPager
+import com.wyt.searchbox.SearchFragment
+import com.wyt.searchbox.custom.IOnSearchClickListener
 import kotlinx.android.synthetic.main.fragment_home_page.view.*
 import me.yokeyword.fragmentation.SupportFragment
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
 
 class HomePageFragment : SupportFragment() {
@@ -21,6 +24,7 @@ class HomePageFragment : SupportFragment() {
     var mViewPager: NoScrollViewPager? = null
     var mSlidingTabs: SlidingTabLayout? = null
     var mToolbar: Toolbar? = null
+    val searchFragment = SearchFragment.newInstance("搜索视频、番剧、up主或av号")!!
 
     companion object {
         fun newInstance(): HomePageFragment {
@@ -49,13 +53,21 @@ class HomePageFragment : SupportFragment() {
         var mHomeAdapter: HomePagerAdapter = HomePagerAdapter(childFragmentManager, App.instance)
         mViewPager?.adapter = mHomeAdapter
         mSlidingTabs?.setViewPager(mViewPager)
-        mViewPager?.currentItem =0
+        mViewPager?.currentItem = 0
         navigationHeaderLayout?.setOnClickListener {
             val activity = activity
             if (activity is MainActivity) {
                 activity.toggleDrawer()
             }
         }
+        searchFragment.setOnSearchClickListener(object : IOnSearchClickListener {
+            override fun OnSearchClick(keyword: String) {
+                activity.toast(keyword)
+            }
+            override fun OnTextChanged(keyword: String) {
+
+            }
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -70,6 +82,9 @@ class HomePageFragment : SupportFragment() {
                 activity.startActivity<GameCentreActivity>()
             }
             R.id.id_action_download -> {
+            }
+            R.id.id_action_search -> {
+                searchFragment.show(activity.supportFragmentManager, SearchFragment.TAG);
             }
         }
         return super.onOptionsItemSelected(item)
