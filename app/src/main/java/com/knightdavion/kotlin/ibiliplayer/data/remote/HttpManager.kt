@@ -62,36 +62,18 @@ object HttpManager {
         mApiService = mRetrofit?.create(ApiService::class.java)
     }
 
-    fun <T> toSubscribe(o: Observable<ApiResponse<T>>, s: Observer<T>) {
-        o.subscribeOn(Schedulers.io())
-                .map(Function<ApiResponse<T>, T>() { response ->
-                    val code = Integer.parseInt(response.getCode())
-                    if (code != ApiService.SUCCESS_CODE) {
-                        throw ApiException(code, response.getMsg())
-                    } else {
-                        response.getDatas()
-                    }
-                }).unsubscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(s);
-    }
-
-    fun getDatasWithCache(subscriber: Observer<TestBean>, pno: Int, ps: Int, dtype: String, update: Boolean) {
-        toSubscribe(cacheProvider!!.getDatas(mApiService!!.getDatas(pno, ps, dtype), EvictProvider(update)), subscriber)
-    }
-
     /**
      * 获取游戏中心头部Banner数据
      */
-    fun getVipGameInfo(subscriber: Observer<VipGameInfo>) {
-        toSubscribe(mApiService!!.getVipGameInfo(), subscriber)
+    fun getVipGameInfo(subscriber: Observer<VipGameInfo>, update: Boolean) {
+        toSubscribe(cacheProvider!!.getVipGameInfo(mApiService!!.getVipGameInfo(), EvictProvider(update)), subscriber)
     }
 
     /**
      * 获取直播分类
      */
-    fun getLiveTypes(subscriber: Observer<List<LiveTypeModel>>) {
-        toSubscribe(mApiService!!.getLiveTyps(), subscriber)
+    fun getLiveHomeTypes(subscriber: Observer<List<LiveHomeTypeModel>>, update: Boolean) {
+        toSubscribe(cacheProvider!!.getLiveHomeTypes(mApiService!!.getLiveHomeTypes(), EvictProvider(update)), subscriber)
     }
 
     /**
@@ -100,7 +82,7 @@ object HttpManager {
     fun getLiveHomeDatas(subscriber: Observer<LiveHomeModel>) {
         toSubscribe(mApiService!!.getLiveHomeDatas(), subscriber)
     }
-    
+
     /**
      * 获取推荐主播数据
      */
@@ -121,7 +103,25 @@ object HttpManager {
                 .subscribe(subscriber);
     }
 
-    fun readAssetsJson(context: Context, url: String): String? {
+
+    private fun <T> toSubscribe(o: Observable<ApiResponse<T>>, s: Observer<T>) {
+        o.subscribeOn(Schedulers.io())
+                .map(Function<ApiResponse<T>, T>() { response ->
+                    val code = Integer.parseInt(response.getCode())
+                    if (code != ApiService.SUCCESS_CODE) {
+                        throw ApiException(code, response.getMsg())
+                    } else {
+                        response.getDatas()
+                    }
+                }).unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(s);
+    }
+
+    /**
+     * 获取assets目录下的json
+     */
+    private fun readAssetsJson(context: Context, url: String): String? {
         val assetManager = context.assets
         try {
             val inputStream = assetManager.open(url)

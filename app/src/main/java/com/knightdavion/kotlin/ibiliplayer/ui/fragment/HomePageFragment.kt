@@ -49,7 +49,7 @@ class HomePageFragment : SupportFragment() {
         var mHomeAdapter: HomePagerAdapter = HomePagerAdapter(childFragmentManager, App.instance)
         mViewPager?.adapter = mHomeAdapter
         mSlidingTabs?.setViewPager(mViewPager)
-        mViewPager?.currentItem = 0
+        mViewPager?.currentItem =0
         navigationHeaderLayout?.setOnClickListener {
             val activity = activity
             if (activity is MainActivity) {

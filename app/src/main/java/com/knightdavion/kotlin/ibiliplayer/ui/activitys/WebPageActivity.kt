@@ -4,12 +4,12 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.webkit.*
 import com.github.ybq.android.spinkit.SpinKitView
 import com.knightdavion.kotlin.ibiliplayer.R
-import com.knightdavion.kotlin.ibiliplayer.ui.BaseActivity
 import com.knightdavion.kotlin.ibiliplayer.ui.LoadingBarManager
 import com.knightdavion.kotlin.ibiliplayer.ui.ToolBarManager
 import com.knightdavion.kotlin.ibiliplayer.util.ClipboardUtil
@@ -21,7 +21,7 @@ import org.jetbrains.anko.toast
 /**
  * Created by shiwei on 2017/6/14.
  */
-class WebPageActivity : BaseActivity(), ToolBarManager, LoadingBarManager {
+class WebPageActivity : AppCompatActivity(), ToolBarManager, LoadingBarManager {
     companion object {
         val URL = "WebPageActivity:url"
         val TITLE = "WebPageActivity:title"
@@ -98,9 +98,7 @@ class WebPageActivity : BaseActivity(), ToolBarManager, LoadingBarManager {
         mWebView.loadUrl(url)
     }
 
-
-    override fun onBackPressedSupport() {
-        super.onBackPressedSupport()
+    override fun onBackPressed() {
         if (mWebView.canGoBack() && mWebView.copyBackForwardList().size > 0
                 && !mWebView.url.equals(mWebView.copyBackForwardList()
                 .getItemAtIndex(0).originalUrl)) {
@@ -109,6 +107,7 @@ class WebPageActivity : BaseActivity(), ToolBarManager, LoadingBarManager {
             finish()
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

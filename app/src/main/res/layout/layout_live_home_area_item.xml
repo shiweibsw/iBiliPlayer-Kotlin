@@ -26,8 +26,7 @@
             android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/bangumi_timeline_background"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/title"
@@ -37,7 +36,6 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:maxLines="2"
-            android:text="#手游直播#【来点歌呀】这个铌怎么又在画小姐姐"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -50,7 +48,6 @@
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="8dp"
-            android:text="小白第二"
             android:textColor="@color/font_grey_dark"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +62,6 @@
             android:layout_marginRight="16dp"
             android:drawableStart="@drawable/ic_watching"
             android:gravity="center"
-            android:text="1024"
             android:textColor="@color/font_grey_dark"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

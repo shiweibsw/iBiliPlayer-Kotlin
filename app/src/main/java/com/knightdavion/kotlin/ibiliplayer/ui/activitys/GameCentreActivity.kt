@@ -31,7 +31,7 @@ import org.jetbrains.anko.startActivity
 /**
  * Created by shiwei on 2017/6/14.
  */
-class GameCentreActivity : BaseActivity(),ToolBarManager,LoadingBarManager {
+class GameCentreActivity : BaseActivity(), ToolBarManager, LoadingBarManager {
 
     override val toolbar by lazy { find<Toolbar>(R.id.toolbar) }
     override val loadingBar by lazy { find<SpinKitView>(R.id.psBar) }
@@ -95,10 +95,11 @@ class GameCentreActivity : BaseActivity(),ToolBarManager,LoadingBarManager {
                     )
                 }
             }
+
             override fun onError(code: Int, errorMsg: String) {
                 hideLoadingBar()
             }
-        }))
+        }), false)
     }
 
 }

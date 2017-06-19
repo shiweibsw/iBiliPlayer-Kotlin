@@ -40,6 +40,9 @@
         <activity
             android:name=".ui.activitys.WebPageActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ui.activitys.LiveHomeTypesActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -25,7 +25,7 @@ class SplashActivity : BaseActivity(), EasyPermissions.PermissionCallbacks {
             if (EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 goMain();
             } else {
-                EasyPermissions.requestPermissions(this, getString(R.string.app_name) + "需要使用您的权限", 0, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                EasyPermissions.requestPermissions(this, getString(R.string.app_name) + "需要使用您的存储权限", 0, Manifest.permission.WRITE_EXTERNAL_STORAGE);
             }
         }, 2000)
     }
