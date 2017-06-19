@@ -8,6 +8,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -16,10 +17,10 @@
 
         <TextView
             android:id="@+id/integrated"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="综合"
             android:textColor="@color/font_grey_dark"
             android:textSize="14sp"/>
@@ -30,8 +31,40 @@
             android:layout_below="@id/integrated"
             android:layout_marginTop="8dp"
             android:background="@color/driver_line"/>
+
         <ImageView
+            android:id="@+id/attention"
+            android:layout_marginRight="16dp"
+            android:tint="@color/colorPrimary"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_index_attention"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:id="@+id/rank"
+            android:layout_marginRight="16dp"
+            android:tint="@color/colorPrimary"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/attention"
+            android:src="@drawable/ic_index_rank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </RelativeLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.constraint.ConstraintLayout>

@@ -90,7 +90,6 @@ object HttpManager {
         toSubscribe(mApiService!!.getLiveHomeHotDatas(), subscriber)
     }
 
-
     /**
      * 获取游戏中心数据（本地）
      */

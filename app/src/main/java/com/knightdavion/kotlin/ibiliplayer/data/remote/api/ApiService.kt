@@ -30,4 +30,7 @@ interface ApiService {
 
     @GET(LIVE_BASE_URL + "AppNewIndex/recommend?_device=android&_hwid=12f957357901e986&appkey=1d8b6e7d45233436&build=507000&mobi_app=android&platform=android&scale=xxhdpi&src=huawei&trace_id=20170617142600035&ts=1497680795&version=5.7.0.507000&sign=e0e93fcc42a2dbd83c44f13f6b552224")
     fun getLiveHomeHotDatas(): Observable<ApiResponse<LiveHomeHotModle>>
+
+
+
 }
