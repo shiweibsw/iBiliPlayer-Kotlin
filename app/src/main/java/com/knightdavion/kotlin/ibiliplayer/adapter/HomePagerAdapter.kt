@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.knightdavion.kotlin.ibiliplayer.R
+import com.knightdavion.kotlin.ibiliplayer.ui.fragment.HomeDiscoverFragment
 import com.knightdavion.kotlin.ibiliplayer.ui.fragment.HomeLiveFragment
 import com.knightdavion.kotlin.ibiliplayer.ui.fragment.HomeRecommendFragment
 import com.knightdavion.kotlin.ibiliplayer.ui.fragment.NullFragment
@@ -40,7 +41,7 @@ class HomePagerAdapter(fm: FragmentManager, context: Context) : FragmentPagerAda
                     fragments[p0] = NullFragment.newInstance()
                 }
                 5 -> {
-                    fragments[p0] = NullFragment.newInstance()
+                    fragments[p0] = HomeDiscoverFragment.newInstance()
                 }
             }
         }

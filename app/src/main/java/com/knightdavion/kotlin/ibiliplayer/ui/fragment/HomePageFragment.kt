@@ -68,13 +68,14 @@ class HomePageFragment : SupportFragment() {
             override fun OnSearchClick(keyword: String) {
                 activity.toast(keyword)
             }
+
             override fun OnTextChanged(keyword: String) {
                 HttpManager.getSearchSuggests(HttpSubscriber<SearchResultModle>(object : OnResultCallBack<SearchResultModle> {
                     override fun onSuccess(model: SearchResultModle) {
                         val suggests = mutableListOf<String>()
                         if (model.upuser != null) suggests.add(model.upuser[0].name)
                         if (model.bangumi != null) suggests.add(model.bangumi[0].name)
-                        suggests.addAll(model.suggest)
+                        if (model.suggest != null) suggests.addAll(model.suggest)
                         searchFragment.setSuggests(suggests)
                     }
                     override fun onError(code: Int, errorMsg: String) {

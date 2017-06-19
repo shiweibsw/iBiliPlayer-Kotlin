@@ -11,5 +11,6 @@
     <color name="refresh_holo_orange_light">#ffffbb33</color>
     <color name="refresh_holo_red_light">#ffff4444</color>
     <color name="refresh_holo_blue_light">#ff33b5e5</color>
-
+    <color name="black_alpha_45">#71000000</color>
+    <color name="gray_20">#9DA0A3</color>
 </resources>
