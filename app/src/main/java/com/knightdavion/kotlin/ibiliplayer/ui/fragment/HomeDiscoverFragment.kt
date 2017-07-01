@@ -10,13 +10,13 @@ import com.knightdavion.kotlin.ibiliplayer.R
 import com.knightdavion.kotlin.ibiliplayer.data.remote.HttpManager
 import com.knightdavion.kotlin.ibiliplayer.data.remote.OnResultCallBack
 import com.knightdavion.kotlin.ibiliplayer.data.remote.subscriber.HttpSubscriber
+import com.knightdavion.kotlin.ibiliplayer.model.DiscoverTagModel
 import com.knightdavion.kotlin.ibiliplayer.model.SearchResultModle
 import com.wyt.searchbox.SearchFragment
 import com.wyt.searchbox.custom.IOnSearchClickListener
 import me.yokeyword.fragmentation.SupportFragment
 import org.jetbrains.anko.find
 import org.jetbrains.anko.toast
-
 
 class HomeDiscoverFragment : SupportFragment() {
     val searchFragment = SearchFragment.newInstance("搜索视频、番剧、up主或av号")!!
@@ -42,6 +42,16 @@ class HomeDiscoverFragment : SupportFragment() {
     override fun onLazyInitView(savedInstanceState: Bundle?) {
         super.onLazyInitView(savedInstanceState)
         Log.e("TAG", "loaded")
+        getDiscoverTagList()
+    }
+    fun getDiscoverTagList(){
+        HttpManager.getDiscoverTagList(HttpSubscriber<DiscoverTagModel>(object : OnResultCallBack<DiscoverTagModel>{
+            override fun onSuccess(model: DiscoverTagModel) {
+                Log.e("TAG",model.toString())
+            }
+            override fun onError(code: Int, errorMsg: String) {
+            }
+        }))
     }
 
     fun initSearch() {

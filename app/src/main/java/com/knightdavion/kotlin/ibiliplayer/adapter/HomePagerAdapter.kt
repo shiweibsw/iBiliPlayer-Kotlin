@@ -14,6 +14,7 @@ import com.knightdavion.kotlin.ibiliplayer.ui.fragment.NullFragment
  * Created by shiwei on 2017/6/14.
  */
 class HomePagerAdapter(fm: FragmentManager, context: Context) : FragmentPagerAdapter(fm) {
+
     private var titles: Array<String?> = arrayOfNulls<String>(0)
     private var fragments: Array<Fragment?> = arrayOfNulls<Fragment>(0)
 

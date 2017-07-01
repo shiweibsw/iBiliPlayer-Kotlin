@@ -98,6 +98,13 @@ object HttpManager {
     }
 
     /**
+     * 获取发现板块tag列表数据
+     */
+    fun getDiscoverTagList(subscriber: Observer<DiscoverTagModel>) {
+        toSubscribe(mApiService!!.getDiscoverTagList(), subscriber)
+    }
+
+    /**
      * 获取游戏中心数据（本地）
      */
     fun getGameList(subscriber: Observer<GameCenterModle>, context: Context, url: String) {

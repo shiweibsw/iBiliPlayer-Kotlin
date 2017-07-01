@@ -30,7 +30,9 @@ interface ApiService {
     @GET(LIVE_BASE_URL + "AppNewIndex/recommend?_device=android&_hwid=12f957357901e986&appkey=1d8b6e7d45233436&build=507000&mobi_app=android&platform=android&scale=xxhdpi&src=huawei&trace_id=20170617142600035&ts=1497680795&version=5.7.0.507000&sign=e0e93fcc42a2dbd83c44f13f6b552224")
     fun getLiveHomeHotDatas(): Observable<ApiResponse<LiveHomeHotModle>>
 
-    @GET(APP_BASE_URL+"x/v2/search/suggest?appkey=1d8b6e7d45233436&build=506000&mobi_app=android&platform=android&ts=1497858075&type=accurate&sign=eca44810bac5172ba752568c050cd623")
-    fun getSearchSuggests(@Query("keyword") keyword:String): Observable<ApiResponse<SearchResultModle>>
+    @GET(APP_BASE_URL + "x/v2/search/suggest?appkey=1d8b6e7d45233436&build=506000&mobi_app=android&platform=android&ts=1497858075&type=accurate&sign=eca44810bac5172ba752568c050cd623")
+    fun getSearchSuggests(@Query("keyword") keyword: String): Observable<ApiResponse<SearchResultModle>>
 
+    @GET(APP_BASE_URL + "x/v2/search/hot?appkey=1d8b6e7d45233436&build=506000&limit=50&mobi_app=android&platform=android&ts=1498030948&sign=5cd36761be9e593a393a4abcf66e294e")
+    fun getDiscoverTagList(): Observable<ApiResponse<DiscoverTagModel>>
 }
