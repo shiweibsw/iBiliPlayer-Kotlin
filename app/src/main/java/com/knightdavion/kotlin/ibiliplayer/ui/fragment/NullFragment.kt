@@ -22,7 +22,6 @@ class NullFragment : SupportFragment() {
         setHasOptionsMenu(true);
     }
 
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView: View = inflater!!.inflate(R.layout.fragment_null, container, false)
         return rootView
